@@ -1,7 +1,7 @@
 {
   "name": "jasme",
   "version": "2.4.0",
-  "description": "jasme is a simplistic jasmine 2.4 node launcher, all in one",
+  "description": "simplistic jasmine 2.4 node launcher, all in one",
   "main": "jasmine.js",
   "scripts": {
     "test": "./run.js"
