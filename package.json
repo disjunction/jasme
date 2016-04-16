@@ -7,7 +7,6 @@
     "test": "./run.js"
   },
   "author": "Konstantin Pogorelov <or@pluseq.com>",
-  "license": "ISC",
   "bin": {
     "jasme": "./run.js"
   },
