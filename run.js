@@ -39,7 +39,7 @@ for (var i = 2; i < process.argv.length; i++) {
 var jasmine = new Jasmine({ projectBaseDir: path.resolve() });
 
 // hack - remove dot-reporter
-jasmine.configureDefaultReporter({print: () => {} });
+jasmine.configureDefaultReporter({print: function() {} });
 
 // add console reporter with colors
 var SpecReporter = require("jasmine-spec-reporter"),
