@@ -1,3 +1,5 @@
+[![build status](https://api.travis-ci.org/disjunction/jasme.png)](https://travis-ci.org/disjunction/jasme)
+
 # Jasme
 
 simplistic node.js **jasmine 2.4.x launcher**, created to compensate the lack of jasmine 2 support in jamine-node
