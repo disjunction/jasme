@@ -1,3 +1,3 @@
-describe("test", function() {
+describe("another", function() {
     it("works", function() {});
 });

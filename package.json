@@ -1,12 +1,12 @@
 {
   "name": "jasme",
-  "version": "2.4.0",
-  "description": "simplistic jasmine 2.4 node launcher, all in one",
+  "version": "2.4.1",
+  "description": "simplistic node.js jasmine 2.4 launcher",
   "main": "jasmine.js",
   "scripts": {
     "test": "./run.js"
   },
-  "author": "or@pluseq.com",
+  "author": "Konstantin Pogorelov <or@pluseq.com>",
   "license": "ISC",
   "bin": {
     "jasme": "./run.js"
@@ -15,9 +15,5 @@
     "jasmine": "^2.4.1",
     "jasmine-reporters": "^2.1.1",
     "jasmine-spec-reporter": "^2.4.0"
-  },
-  "publishConfig": {
-    "registry": "http://127.0.0.1:4873"
   }
-
 }

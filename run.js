@@ -25,6 +25,14 @@ for (let i = 2; i < process.argv.length; i++) {
         continue;
     }
 
+    try {
+        if (fs.statSync(option).isDirectory()) {
+            option = option.replace(/\/+$/, "") + "/**/*.js";
+        }
+    } catch (e) {
+        // do nothing
+    }
+
     specs.push(option);
 }
 
@@ -72,7 +80,7 @@ if (process.env.JASMINE_CONFIG_PATH) {
 
         // try to autodetect specs only if no specs were given
         if (!specs.length) {
-            let candidates = ["test", "spec", "test/spec"];
+            let candidates = ["test", "tests", "spec", "specs", "test/spec"];
 
             do try {
                 var specPath = candidates.pop();
@@ -83,6 +91,7 @@ if (process.env.JASMINE_CONFIG_PATH) {
                             "**/*.js"
                         ]
                     });
+
                     break;
                 }
             } catch(e) {
