@@ -42,7 +42,3 @@ jasme --output=target tests
 jasme
 
 ```
-
-## LICENSE
-
-WTFPL

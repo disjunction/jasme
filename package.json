@@ -11,9 +11,20 @@
   "bin": {
     "jasme": "./run.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/disjunction/jasme"
+  },
+  "keywords": [
+    "jasmine",
+    "runner",
+    "launcher",
+    "cli"
+  ],
   "dependencies": {
     "jasmine": "^2.4.1",
     "jasmine-reporters": "^2.1.1",
     "jasmine-spec-reporter": "^2.4.0"
-  }
+  },
+  "license": "WTFPL"
 }
