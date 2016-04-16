@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 "use strict";
 
-let path = require("path"),
+var path = require("path"),
     Jasmine = require("jasmine/lib/jasmine.js"),
     fs = require("fs");
 
 // parse commandline params
 // no getopt to reduce dependencies
-let outputPath = false,
+var outputPath = false,
     specs = [];
 
 if (process.env.JASMINE_OUTPUT) {
@@ -15,8 +15,8 @@ if (process.env.JASMINE_OUTPUT) {
 }
 
 // first 2 options are "node" and this script
-for (let i = 2; i < process.argv.length; i++) {
-    let option = process.argv[i],
+for (var i = 2; i < process.argv.length; i++) {
+    var option = process.argv[i],
         match;
     
     match = option.match(/^--output=(.*)$/);
@@ -36,13 +36,13 @@ for (let i = 2; i < process.argv.length; i++) {
     specs.push(option);
 }
 
-let jasmine = new Jasmine({ projectBaseDir: path.resolve() });
+var jasmine = new Jasmine({ projectBaseDir: path.resolve() });
 
 // hack - remove dot-reporter
 jasmine.configureDefaultReporter({print: () => {} });
 
 // add console reporter with colors
-let SpecReporter = require("jasmine-spec-reporter"),
+var SpecReporter = require("jasmine-spec-reporter"),
     specReporter = new SpecReporter({
         displayStacktrace: "summary"
     });
@@ -50,7 +50,7 @@ jasmine.addReporter(specReporter);
 
 // add junit reporter, e.g. for jenkins
 if (outputPath) {
-    let JUnitReporter = require("jasmine-reporters").JUnitXmlReporter,
+    var JUnitReporter = require("jasmine-reporters").JUnitXmlReporter,
         jUnitReporter = new JUnitReporter({
             savePath: outputPath,
             consolidateAll: true
@@ -80,7 +80,7 @@ if (process.env.JASMINE_CONFIG_PATH) {
 
         // try to autodetect specs only if no specs were given
         if (!specs.length) {
-            let candidates = ["test", "tests", "spec", "specs", "test/spec"];
+            var candidates = ["test", "tests", "spec", "specs", "test/spec"];
 
             do try {
                 var specPath = candidates.pop();
