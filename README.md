@@ -16,7 +16,11 @@ simplistic node.js **jasmine 2.4.x launcher**, created to compensate the lack of
 
 **Option a**: install globally (`-g`):
 
-`jasme [--output=junit_xml_dir] [spec_mask...]`
+```
+npm install -g jasme
+
+jasme [--output=junit_xml_dir] [spec_mask...]
+```
 
 **Option b**: install for specific project:
 
