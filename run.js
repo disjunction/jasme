@@ -7,8 +7,11 @@ var path = require("path"),
 
 // parse commandline params
 // no getopt to reduce dependencies
-var outputPath = false,
-    specs = [];
+var outputPath = false;
+var options = {
+    color: true
+};
+var specs = [];
 
 if (process.env.JASMINE_OUTPUT) {
     outputPath = process.env.JASMINE_OUTPUT;
@@ -19,6 +22,11 @@ for (var i = 2; i < process.argv.length; i++) {
     var option = process.argv[i],
         match;
     
+    if (option == "--noColor") {
+        options.color = false;
+        continue;
+    }
+
     match = option.match(/^--output=(.*)$/);
     if (match) {
         outputPath = match[1];
@@ -42,11 +50,15 @@ var jasmine = new Jasmine({ projectBaseDir: path.resolve() });
 jasmine.configureDefaultReporter({print: function() {} });
 
 // add console reporter with colors
-var SpecReporter = require("jasmine-spec-reporter"),
-    specReporter = new SpecReporter({
-        displayStacktrace: "summary"
-    });
-jasmine.addReporter(specReporter);
+var SpecReporter = require("jasmine-spec-reporter");
+var specReporterOptions = {
+    displayStacktrace: "summary"
+};
+if (!options.color) {
+    specReporterOptions.colors = false;
+}
+
+jasmine.addReporter(new SpecReporter(specReporterOptions));
 
 // add junit reporter, e.g. for jenkins
 if (outputPath) {

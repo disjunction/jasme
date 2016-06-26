@@ -19,7 +19,7 @@ simplistic node.js **jasmine 2.4.x launcher**, created to compensate the lack of
 ```
 npm install -g jasme
 
-jasme [--output=junit_xml_dir] [spec_mask...]
+jasme [--output=junit_xml_dir] [--noColor] [spec_mask...]
 ```
 
 **Option b**: install for specific project:
