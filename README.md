@@ -16,15 +16,15 @@ simplistic node.js **jasmine 2.4.x launcher**, created to compensate the lack of
 
 **Option a**: install globally (`-g`):
 
-```
+```sh
 npm install -g jasme
 
-jasme [--output=junit_xml_dir] [--noColor] [spec_mask...]
+jasme [--output=junit_xml_dir] [--noColor] [--boot=boot_script] [spec_mask...]
 ```
 
 **Option b**: install for specific project:
 
-```
+```sh
 npm install --save-dev jasme
 
 node node_modules/jasme/run.js ...
@@ -32,9 +32,15 @@ node node_modules/jasme/run.js ...
 node_modules/jasme/run.js ...
 ```
 
+## Options
+
+* **noColor** - disables ANSI color output
+* **output=...** - generates junit xml output
+* **boot=...** - runs a bootstrap script, where you can add helpers etc.
+
 ## Examples
 
-```
+```sh
 # Run all `*.js` files in given dir:
 jasme tests/my_specs
 

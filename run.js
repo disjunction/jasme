@@ -8,6 +8,7 @@ var path = require("path"),
 // parse commandline params
 // no getopt to reduce dependencies
 var outputPath = false;
+var bootScript;
 var options = {
     color: true
 };
@@ -30,6 +31,12 @@ for (var i = 2; i < process.argv.length; i++) {
     match = option.match(/^--output=(.*)$/);
     if (match) {
         outputPath = match[1];
+        continue;
+    }
+
+    match = option.match(/^--boot=(.*)$/);
+    if (match) {
+        bootScript = match[1];
         continue;
     }
 
@@ -68,6 +75,10 @@ if (outputPath) {
             consolidateAll: true
         });
     jasmine.addReporter(jUnitReporter);
+}
+
+if (bootScript) {
+    require(bootScript)(jasmine);
 }
 
 // load config, or fall back to default
