@@ -77,10 +77,6 @@ if (outputPath) {
     jasmine.addReporter(jUnitReporter);
 }
 
-if (bootScript) {
-    require(bootScript)(jasmine);
-}
-
 // load config, or fall back to default
 function tryLoad(configPath) {
     try {
@@ -94,34 +90,44 @@ function tryLoad(configPath) {
     }
 }
 
-if (process.env.JASMINE_CONFIG_PATH) {
-    jasmine.loadConfigFile(process.env.JASMINE_CONFIG_PATH);
-} else {
-    // try to autodetect jasmine.json config
-    
-    if (! (tryLoad("test/jasmine.json") || tryLoad("spec/jasmine.json"))) {
+function executeJasmine(error) {
+    if (error) {
+        return console.error(error);
+    }
+    if (process.env.JASMINE_CONFIG_PATH) {
+        jasmine.loadConfigFile(process.env.JASMINE_CONFIG_PATH);
+    } else {
+        // try to autodetect jasmine.json config
+        if (! (tryLoad("test/jasmine.json") || tryLoad("spec/jasmine.json"))) {
 
-        // try to autodetect specs only if no specs were given
-        if (!specs.length) {
-            var candidates = ["test", "tests", "spec", "specs", "test/spec"];
+            // try to autodetect specs only if no specs were given
+            if (!specs.length) {
+                var candidates = ["test", "tests", "spec", "specs", "test/spec"];
 
-            do try {
-                var specPath = candidates.pop();
-                if (fs.statSync(specPath).isDirectory()) {
-                    jasmine.loadConfig({
-                        "spec_dir": specPath,
-                        "spec_files": [
-                            "**/*.js"
-                        ]
-                    });
+                do try {
+                    var specPath = candidates.pop();
+                    if (fs.statSync(specPath).isDirectory()) {
+                        jasmine.loadConfig({
+                            "spec_dir": specPath,
+                            "spec_files": [
+                                "**/*.js"
+                            ]
+                        });
 
-                    break;
-                }
-            } catch(e) {
-                // do nothing
-            } while(candidates.length);
+                        break;
+                    }
+                } catch(e) {
+                    // do nothing
+                } while(candidates.length);
+            }
         }
     }
+
+    jasmine.execute(specs);
 }
 
-jasmine.execute(specs);
+if (bootScript) {
+    require(bootScript)(executeJasmine, jasmine);
+} else {
+    executeJasmine();
+}
