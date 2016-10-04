@@ -6,6 +6,7 @@ jasme:
     stdin_open: true
     volumes:
         - ./run.js:/app/run.js
+        - ./testBoot.js:/app/testBoot.js
         - ./spec:/app/spec
         - ./package.json:/app/package.json
-    command: sleep 1000000
+    command: sleep 10000000
