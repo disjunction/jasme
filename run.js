@@ -53,8 +53,8 @@ for (var i = 2; i < process.argv.length; i++) {
 
 var jasmine = new Jasmine({ projectBaseDir: path.resolve() });
 
-// hack - remove dot-reporter
-jasmine.configureDefaultReporter({print: function() {} });
+// remove default default console reporter (the one with dots)
+jasmine.env.clearReporters();
 
 // add console reporter with colors
 var SpecReporter = require("jasmine-spec-reporter");
