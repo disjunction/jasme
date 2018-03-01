@@ -2,7 +2,7 @@
 
 # Jasme
 
-simplistic node.js **jasmine 2.5.x launcher**, created to compensate the lack of jasmine 2 support in jamine-node
+simplistic node.js **jasmine 3.1.x launcher**, created to compensate the lack of jasmine 3 support in jamine-node
 
 ## Features
 

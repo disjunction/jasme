@@ -1,7 +1,7 @@
 {
   "name": "jasme",
   "version": "5.2.0",
-  "description": "simplistic node.js jasmine 2.5 launcher",
+  "description": "simplistic node.js jasmine 3.1 launcher",
   "main": "jasmine.js",
   "scripts": {
     "test": "./run.js  --boot=./testBoot"
@@ -21,9 +21,9 @@
     "cli"
   ],
   "dependencies": {
-    "jasmine": "^2.5.2",
-    "jasmine-reporters": "^2.2.0",
-    "jasmine-spec-reporter": "^2.7.0"
+    "jasmine": "^3.1.0",
+    "jasmine-reporters": "^2.3.0",
+    "jasmine-spec-reporter": "^4.2.1"
   },
   "license": "WTFPL"
 }

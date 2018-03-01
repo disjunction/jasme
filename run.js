@@ -57,7 +57,7 @@ var jasmine = new Jasmine({ projectBaseDir: path.resolve() });
 jasmine.env.clearReporters();
 
 // add console reporter with colors
-var SpecReporter = require("jasmine-spec-reporter");
+var SpecReporter = require("jasmine-spec-reporter").SpecReporter;
 var specReporterOptions = {
     displayStacktrace: "summary"
 };
