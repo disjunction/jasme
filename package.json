@@ -1,7 +1,7 @@
 {
   "name": "jasme",
-  "version": "5.2.0",
-  "description": "simplistic node.js jasmine 3.1 launcher",
+  "version": "6.0.0",
+  "description": "simplistic node.js jasmine 3.x launcher",
   "main": "jasmine.js",
   "scripts": {
     "test": "./run.js  --boot=./testBoot"
